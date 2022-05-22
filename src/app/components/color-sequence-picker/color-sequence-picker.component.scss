@@ -20,11 +20,17 @@
         position: absolute;
         left: toRem(250);
         top: toRem(250);
+        z-index: 1;
     }
 
     &__color {
         width: toRem(290);
         height: toRem(290);
+        opacity: .5;
+
+        &--selected {
+            opacity: 1;
+        }
 
         &--bg-primary {
             background-color: #44AF69;
