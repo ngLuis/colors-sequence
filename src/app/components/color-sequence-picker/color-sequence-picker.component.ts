@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Colors } from 'src/types/Colors';
 
 @Component({
   selector: 'app-color-sequence-picker',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./color-sequence-picker.component.scss']
 })
 export class ColorSequencePickerComponent implements OnInit {
+
+  colors = Colors;
+  @Input() selectedColor?: Colors;
 
   constructor() { }
 

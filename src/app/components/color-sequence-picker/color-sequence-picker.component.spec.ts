@@ -1,25 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {render, screen, fireEvent} from '@testing-library/angular'
+import { ColorSequencePickerComponent } from 'src/app/components/color-sequence-picker/color-sequence-picker.component'
+import "@testing-library/jest-dom/extend-expect" 
+import { Colors } from 'src/types/Colors'
 
-import { ColorSequencePickerComponent } from './color-sequence-picker.component';
+describe("Color Sequence Picker", () => {
 
-describe('ColorSequencePickerComponent', () => {
-  let component: ColorSequencePickerComponent;
-  let fixture: ComponentFixture<ColorSequencePickerComponent>;
+    it("Selects color passed as a property", async () => {
+        const container = await render(ColorSequencePickerComponent, {
+            componentProperties: {
+                selectedColor: Colors.PRIMARY
+            }
+        })
+        const firstColor = container.getByRole('primary-color')
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ColorSequencePickerComponent ]
+        await fireEvent.click(firstColor)
+
+        expect(firstColor).toHaveClass('c-picker-wrapper__color--selected')
     })
-    .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ColorSequencePickerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+})

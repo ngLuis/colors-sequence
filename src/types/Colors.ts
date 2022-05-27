@@ -1,0 +1,6 @@
+export enum Colors {
+    PRIMARY = "PRIMARY",
+    SECONDARY = "SECONDARY",
+    TERTIARY = "TERTIARY",
+    QUATERNARY = "QUATERNARY"
+}
