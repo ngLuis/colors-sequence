@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Radio } from 'src/app/services/Radio';
 import { Colors } from 'src/types/Colors';
 
 @Component({
@@ -14,6 +15,16 @@ export class ColorSequencePickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  select(color: Colors) {
+    this.selectedColor = color;
+    const songName: string = this.selectedColor.toLowerCase() + '.mp3'
+    this.reproduceSong(songName)
+  }
+
+  reproduceSong(songName: string) {
+    Radio.play(songName)
   }
 
 }
