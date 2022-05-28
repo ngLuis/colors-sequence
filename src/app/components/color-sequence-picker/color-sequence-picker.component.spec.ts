@@ -11,6 +11,14 @@ describe("Color Sequence Picker", () => {
                 selectedColor: Colors.PRIMARY
             }
         })
+
+        const firstColor = container.getByRole('primary-color')
+
+        expect(firstColor).toHaveClass('c-picker-wrapper__color--selected')
+    })
+
+    it("Selects color when clicks on it", async () => {
+        const container = await render(ColorSequencePickerComponent)
         const firstColor = container.getByRole('primary-color')
 
         await fireEvent.click(firstColor)
